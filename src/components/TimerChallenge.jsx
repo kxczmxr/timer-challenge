@@ -2,7 +2,7 @@ import {useState, useRef} from "react";
 import ResultModal from "./ResultModal.jsx";
 
 
-//let timer; <- na zewnatrz glownej funkcji sie nadpisuje,
+//let timer; <- na zewnątrz głównej funkcji sie nadpisuje,
 //a w srodku dziala na kopiach po re-execute kodu i ma inna wartosc
 export default function TimerChallenge({title, targetTime}){
     const timer = useRef();

@@ -6,13 +6,14 @@ import ResultModal from "./ResultModal.jsx";
 //a w srodku dziala na kopiach po re-execute kodu i ma inna wartosc
 export default function TimerChallenge({title, targetTime}){
     const timer = useRef();
-
+    const dialog = useRef();
     const [timerStarted, setTimerStarted] = useState(false);
     const [timerExpired, setTimerExpired] = useState(false);
 
     function handleStart(){
         timer.current = setTimeout(() => {
             setTimerExpired(true);
+            dialog.current.open();
         }, targetTime * 1000);
 
         setTimerStarted(true);
@@ -22,7 +23,7 @@ export default function TimerChallenge({title, targetTime}){
     }
     return (
         <>
-        {timerExpired &&< ResultModal result="lost" targetTime={targetTime}/>}
+        < ResultModal ref={dialog} result="lost" targetTime={targetTime}/>
         <section className="challenge">
             <h2>{title}</h2>
             <p className="challenge-time">
